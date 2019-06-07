@@ -49,8 +49,10 @@ config :phoenix, :plug_init_mode, :runtime
 
 # Configure your database
 config :elixir_api, ElixirApi.Repo,
-  username: "postgres",
-  password: "postgres",
+  username: "fcadmin",
+  password: "F@rmcr0wdY",
   database: "elixir_api_dev",
-  hostname: "localhost",
+  hostname: "localhost:8080",
+  port: 3306,
+  socket: "/Applications/MAMP/tmp/mysql/mysql.sock",
   pool_size: 10
