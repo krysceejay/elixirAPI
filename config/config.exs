@@ -22,6 +22,11 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
+#Guardian config
+config :elixir_api, ElixirApi.Guardian,
+       issuer: "elixir_api ",
+       secret_key: "ZC9QGAD44nqEo5BeEWSzROyeDqA4BFXLvdQkYfZ5GLCwISbtm0/iAE9Qrl6xBNkf"
+
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 

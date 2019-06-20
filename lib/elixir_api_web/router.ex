@@ -3,6 +3,7 @@ defmodule ElixirApiWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug ElixirApiWeb.Plugs.Context
   end
 
   scope "/api" do

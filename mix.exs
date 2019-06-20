@@ -47,7 +47,8 @@ defmodule ElixirApi.MixProject do
       {:bcrypt_elixir, "~> 0.12"},
       {:absinthe, "~> 1.4"},
       {:absinthe_plug, "~> 1.4"},
-      {:dataloader, "~> 1.0"}
+      {:dataloader, "~> 1.0"},
+      {:guardian, "~> 1.0"}
     ]
   end
 
