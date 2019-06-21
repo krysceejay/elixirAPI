@@ -1,4 +1,4 @@
-defmodule ElixirApiWeb.Schema.Types.Sessiontype do
+defmodule ElixirApiWeb.Schema.Types.SessionType do
   use Absinthe.Schema.Notation
 
   object :session_type do

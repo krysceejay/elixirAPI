@@ -5,5 +5,6 @@ defmodule ElixirApiWeb.Schema.Types do
 
   #import_types(Types.Usertype)
   import_types Types.Usertype
-  import_types Types.Sessiontype
+  import_types Types.SessionType
+  import_types Types.PostType
 end

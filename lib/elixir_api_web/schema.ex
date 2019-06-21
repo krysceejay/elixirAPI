@@ -4,8 +4,29 @@ defmodule ElixirApiWeb.Schema do
   alias ElixirApiWeb.Schema.Types
   alias ElixirApiWeb.Resolvers
   alias ElixirApiWeb.Schema.Middleware
+  alias ElixirApi.Blog
   #import Types
   import_types Types
+
+  def context(ctx) do
+    IO.inspect(ctx)
+  loader =
+    Dataloader.new
+    |> Dataloader.add_source(Blog, Blog.data())
+
+  Map.put(ctx, :loader, loader)
+  end
+
+#   def context(ctx) do
+#   default_params = Map.take(ctx, [:current_user])
+#   source = Whatever.data(default_params)
+#   Dataloader.new |> Dataloader.add_source(...)
+#   Map.put(ctx, :loader, dataloader)
+# end
+
+def plugins do
+  [Absinthe.Middleware.Dataloader] ++ Absinthe.Plugin.defaults()
+end
 
   query do
 
@@ -29,6 +50,12 @@ defmodule ElixirApiWeb.Schema do
     field :login_user, type: :session_type do
       arg :input, non_null(:session_input_type)
       resolve &Resolvers.SessionResolver.login_user/3
+    end
+
+    @desc "Create post"
+    field :create_post, type: :post_type do
+      arg :input, non_null(:post_input_type)
+      resolve &Resolvers.PostResolver.create_post/3
     end
 
   end
