@@ -3,6 +3,7 @@ defmodule ElixirApiWeb.Schema do
 
   alias ElixirApiWeb.Schema.Types
   alias ElixirApiWeb.Resolvers
+  alias ElixirApiWeb.Schema.Middleware
   #import Types
   import_types Types
 
@@ -10,6 +11,8 @@ defmodule ElixirApiWeb.Schema do
 
     @desc "Get all users"
     field :users, list_of(:user_type) do
+      #Resolver
+      middleware Middleware.Authorize, :any
       resolve &Resolvers.UserResolver.users/3
     end
 
