@@ -2,6 +2,8 @@ defmodule ElixirApiWeb.Schema.Types.PostType do
   use Absinthe.Schema.Notation
   import Absinthe.Resolution.Helpers, only: [dataloader: 1]
 
+  alias ElixirApi.Blog
+
   object :post_type do
   field :id, :id
   field :title, :string

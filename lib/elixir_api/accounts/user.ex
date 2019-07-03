@@ -3,6 +3,7 @@ defmodule ElixirApi.Accounts.User do
   import Ecto.Changeset
 
   alias ElixirApi.Accounts.Encryption
+  alias ElixirApi.Blog.Post
 
   schema "users" do
     field :email, :string, unique: true
@@ -10,6 +11,7 @@ defmodule ElixirApi.Accounts.User do
     field :last_name, :string
     field :password, :string
     field :role, :string, default: "user"
+    has_many :posts, Post 
 
     ##Virtual Fields ##
     field :passwordfield, :string, virtual: true

@@ -2,7 +2,7 @@ defmodule ElixirApiWeb.Resolvers.UserResolver do
   alias ElixirApi.Accounts
 
   def users(_,_,%{context: context}) do
-    IO.inspect(context)
+    #IO.inspect(context)
   {:ok, Accounts.list_users()}
   end
 

@@ -21,14 +21,9 @@ defmodule ElixirApi.Blog do
       Dataloader.Ecto.new(ElixirApi.Repo, query: &query/2)
   end
 
-  # def query(Post, _) do
-  # from p in Post, where: is_nil(p.deleted_at)
-  # end
-
   def query(queryable, _params) do
     queryable
   end
-
 
 
   def list_posts do

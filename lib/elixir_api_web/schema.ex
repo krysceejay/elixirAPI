@@ -9,7 +9,6 @@ defmodule ElixirApiWeb.Schema do
   import_types Types
 
   def context(ctx) do
-    IO.inspect(ctx)
   loader =
     Dataloader.new
     |> Dataloader.add_source(Blog, Blog.data())
