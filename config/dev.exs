@@ -49,8 +49,8 @@ config :phoenix, :plug_init_mode, :runtime
 
 # Configure your database
 config :elixir_api, ElixirApi.Repo,
-  username: "fcadmin",
-  password: "F@rmcr0wdY",
+  username: "xxxxxxxx",
+  password: "xxxxxxxxx",
   database: "elixir_api_dev",
   hostname: "localhost:8080",
   port: 3306,
