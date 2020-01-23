@@ -40,34 +40,48 @@ end
 
   mutation do
     @desc "Register user"
-    field :register_user, type: :user_type do
+    field :register_user, :user_type do
       arg :input, non_null(:user_input_type)
       resolve &Resolvers.UserResolver.register_user/3
     end
 
     @desc "Login a user and return JWT token"
-    field :login_user, type: :session_type do
+    field :login_user, :session_type do
       arg :input, non_null(:session_input_type)
       resolve &Resolvers.SessionResolver.login_user/3
     end
 
     @desc "Create post"
-    field :create_post, type: :post_type do
+    field :create_post, :post_type do
       arg :input, non_null(:post_input_type)
       middleware Middleware.Authorize, :any
       resolve &Resolvers.PostResolver.create_post/3
     end
 
     @desc "Create comment"
-    field :create_comment, type: :comment_type do
+    field :create_comment, :comment_type do
       arg :input, non_null(:comment_input_type)
-      middleware Middleware.Authorize, :any
+      # middleware Middleware.Authorize, :any
       resolve &Resolvers.CommentResolver.create_comment/3
     end
 
   end
   #
-  # subscription do
-  #
-  # end
+    subscription do
+      @desc "Comment subscription"
+      field :comment_added, :comment_type do
+        config fn _, _ ->
+          {:ok, topic: "*"}
+        end
+
+        resolve fn root, _, _ ->
+          # IO.puts("+++++++++++++++++++++")
+          IO.inspect(root)
+          # IO.puts("+++++++++++++++++++++")
+        {:ok, root}
+        end
+
+      end
+  end
+
 end

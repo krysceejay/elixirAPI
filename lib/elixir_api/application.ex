@@ -7,13 +7,15 @@ defmodule ElixirApi.Application do
 
   def start(_type, _args) do
     # List all child processes to be supervised
+    import Supervisor.Spec
     children = [
       # Start the Ecto repository
       ElixirApi.Repo,
       # Start the endpoint when the application starts
-      ElixirApiWeb.Endpoint
+      ElixirApiWeb.Endpoint,
       # Starts a worker by calling: ElixirApi.Worker.start_link(arg)
       # {ElixirApi.Worker, arg},
+      {Absinthe.Subscription, [ElixirApiWeb.Endpoint]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

@@ -1,5 +1,6 @@
 defmodule ElixirApiWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :elixir_api
+  use Absinthe.Phoenix.Endpoint
 
   socket "/socket", ElixirApiWeb.UserSocket,
     websocket: true,
